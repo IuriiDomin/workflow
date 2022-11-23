@@ -1,0 +1,10 @@
+- name: demonstrating of workflow awx
+  host: all
+  gather_facts: yes
+  become: yes
+
+   tasks:
+
+  - name: Set hostname
+    hostname:
+      name: "{{hostname}}"

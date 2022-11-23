@@ -1,0 +1,24 @@
+- name: demonstrating of workflow awx
+  host: all
+  gather_facts: yes
+  become: yes
+
+   tasks:
+
+  - name: create user
+    user:
+      name: "{{new_user}}"
+      home: "/home/{{new_user}}"
+      shell: /bin/bash
+      groups: awx
+      append: yes
+      password: "{{user_pw}}"
+
+   - name: create folder
+     file: 
+       path: "{{home/{{new_user}}"
+       state: directory
+       recurse: yes
+       owner: "{{new_user}}"
+       group: "{{new_user}}"
+       mode: 0755 

@@ -1,0 +1,22 @@
+- name: demonstrating of workflow awx
+  host: all
+  gather_facts: yes
+  become: yes
+
+   tasks:
+
+  - name: Repo update
+    apt:
+      upgrade_cache: yes
+
+  - name: upgrade all packeges to the latest version
+    apt: 
+      name: "*"
+      state: latest
+
+     tasks:
+
+   - name: install deafault packages
+     apt: 
+       name: "{{packages}}"
+       state: present 
